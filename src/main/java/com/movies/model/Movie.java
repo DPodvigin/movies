@@ -1,17 +1,20 @@
 package com.movies.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
 @Entity
 @Table(name="MOVIE")
@@ -43,6 +46,9 @@ public class Movie {
 		    		 joinColumns=@JoinColumn(name="MOVIE_ID"))
 	@Column(name="USERS_COMMENT")
 	private List<String> usersComments;
+	
+	@ManyToMany(mappedBy="movies", fetch=FetchType.LAZY)
+	private Set<Actor> actors;
 	
 	public Long getId() {
 		return id;
@@ -98,6 +104,14 @@ public class Movie {
 	
 	public List<String> getUsersComments() {
 		return usersComments;
+	}
+	
+	public void setActors(Set<Actor> actors) {
+		this.actors = actors;
+	}
+	
+	public Set<Actor> getActors() {
+		return actors;
 	}
 
 }

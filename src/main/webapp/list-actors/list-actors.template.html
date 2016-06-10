@@ -1,0 +1,29 @@
+<div ng-controller="ListActorsController">
+	<div class="container col-xs-8">
+		<div class="form-group col-xs-2">
+		  <label for="name">Enter Actor name</label>
+		  <input type="text" name="name" class="form-control" id="name" ng-model="searchBox">
+		  <button class="btn btn-primary" ng-click="findActor()">Find</button>
+		</div>
+	</div>
+	
+	
+	<div ng-if="actors">
+		<div class="container col-xs-8">
+			<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+			 	<th>Firstname</th>
+			 	<th>Lastname<th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="actor in actors">
+				<td ng-click="foundActor(actor.id)">{{actor.firstname}}</td>
+				<td ng-click="foundActor(actor.id)">{{actor.lastname}}</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>

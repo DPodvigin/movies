@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.movies.dto.CommentMovie;
+import com.movies.dto.MovieDTO;
 import com.movies.model.Movie;
 import com.movies.service.MoviesService;
 
@@ -26,12 +27,12 @@ public class MoviesController {
 	}
 	
 	@RequestMapping("/findByName/{name}")
-	public @ResponseBody List<Movie> findMoviesByName(@PathVariable("name") String movieName) {
+	public @ResponseBody List<MovieDTO> findMoviesByName(@PathVariable("name") String movieName) {
 		return moviesService.findByName(movieName);
 	}
 	
 	@RequestMapping("/findAll")
-	public @ResponseBody List<Movie> findAllMovies() {
+	public @ResponseBody List<MovieDTO> findAllMovies() {
 		return moviesService.findAllMovies();
 	}
 	

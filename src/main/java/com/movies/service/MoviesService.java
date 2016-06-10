@@ -1,6 +1,7 @@
 package com.movies.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.movies.dto.CommentMovie;
+import com.movies.dto.MovieDTO;
 import com.movies.model.Movie;
 import com.movies.repository.MoviesRepository;
 
@@ -22,13 +24,19 @@ public class MoviesService {
 		this.moviesRepository = moviesRepository;
 	}
 	
-	public List<Movie> findByName(String name) {
-		return StringUtils.isEmpty(name) ? moviesRepository.findAll() :
-				moviesRepository.searchWithJPQLQuery(name.toLowerCase());
+	public List<MovieDTO> findByName(String name) {
+		return StringUtils.isEmpty(name) ? findAllMovies() :
+				moviesRepository.searchWithJPQLQuery(name.toLowerCase())
+								.stream()
+								.map(MovieDTO::new)
+								.collect(Collectors.toList());
 	}
 	
-	public List<Movie> findAllMovies() {
-		return moviesRepository.findAll();
+	public List<MovieDTO> findAllMovies() {
+		return moviesRepository.findAll()
+								.stream()
+								.map(MovieDTO::new)
+								.collect(Collectors.toList());
 	}
 	
 	public Movie findById(Long id) {

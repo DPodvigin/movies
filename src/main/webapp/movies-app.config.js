@@ -13,6 +13,10 @@ angular.module('moviesApp')
 				   		when('/addMovie', {
 				   			controller: 'AddMovieController',
 				   			templateUrl: 'add-movie/add-movie.template.html'
+				   		}).
+				   		when('/viewActors', {
+				   			controller: 'ListActorsController',
+				   			templateUrl: 'list-actors/list-actors.template.html'
 				   		});
 	   			}
 	   ]);

@@ -1,1 +1,1 @@
-angular.module('moviesApp', ['ngRoute', 'viewMovie', 'listMovies', 'addMovie']);
+angular.module('moviesApp', ['ngRoute', 'viewMovie', 'listMovies', 'addMovie', 'listActors']);
