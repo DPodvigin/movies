@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="moviesApp">
+	<head>
+		<script src="assets/components/angular/angular.js"></script>
+		<script src="assets/components/angular-route/angular-route.js"></script>
+		<script src="movies-app.js"></script>
+		<script src="MoviesAppController.js"></script>
+		<script src="view-movie/view-movie.app.js"></script>
+		<script src="view-movie/view-movie.controller.js"></script>
+		<script src="list-movies/list-movies.app.js"></script>
+		<script src="list-movies/list-movies.controller.js"></script>
+		<script src="add-movie/add-movie.app.js"></script>
+		<script src="add-movie/add-movie.controller.js"></script>
+		<script src="movies-app.config.js"></script>
+		<script src="data-factory.js"></script>
+		<link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="assets/css/common.css"/>
+		<script src="assets/components/jquery/dist/jquery.min.js"></script>
+		<script src="assets/components/bootstrap/dist/js/bootstrap.min.js"></script>
+	</head>
+	<body ng-controller="MainController">
+		<nav class="navbar navbar-default">
+	  		<div class="container-fluid">
+	  	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      			<ul class="nav navbar-nav">
+		            	<li class="dropdown">
+	          				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Items <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+							  <li><a href="#/">View movies</a></li>
+							  <li><a href="#/addMovie">Add movie</a></li>
+							</ul>
+        				</li>
+	        		</ul>
+	  			</div>
+	  	 	</div>
+  		</nav>
+		<div ng-view>
+		 </div>
+	</body>
+</html> 

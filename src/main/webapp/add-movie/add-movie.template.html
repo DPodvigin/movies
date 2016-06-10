@@ -1,0 +1,43 @@
+<div ng-app="addMovie" id="addMovie">
+	<div ng-controller="AddMovieController">
+		<form name="movieForm" ng-submit="addMovie(movieForm.$valid)" novalidate>
+			<div class="container col-xs-8">
+				<div class="row">
+					<div class="form-group col-xs-4" ng-class="{ 'has-error' : movieForm.name.$invalid && !movieForm.name.$pristine }">
+					  <label for="name">Name:</label>
+					  <input type="text" name="name" class="form-control" id="name" ng-model="movie.name" required>
+					  <p ng-show="movieForm.name.$invalid && !movieForm.name.$pristine" class="help-block">Movie name is required.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-4">
+					  <label for="comment">Tagline:</label>
+					  <textarea class="form-control" rows="5" id="tagline" ng-model="movie.tagline"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-4" ng-class="{ 'has-error' : movieForm.description.$invalid && !movieForm.description.$pristine }">
+					  <label for="comment">Description:</label>
+					  <textarea class="form-control" name="description" rows="5" id="description" ng-model="movie.description" required></textarea>
+					  <p ng-show="movieForm.description.$invalid && !movieForm.description.$pristine" class="help-block">Description is required.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-4" ng-class="{ 'has-error' : movieForm.type.$invalid && !movieForm.type.$pristine }">
+					  <label for="name">Type:</label>
+					  <input type="text" class="form-control" name="type" id="type" ng-model="movie.type" required>
+					  <p ng-show="movieForm.type.$invalid && !movieForm.type.$pristine" class="help-block">Type is required.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-2" ng-class="{ 'has-error' : movieForm.year.$invalid && !movieForm.year.$pristine }">
+					  <label for="name">Year:</label>
+					  <input type="text" class="form-control" name="year" id="name" ng-model="movie.year" ng-pattern="'\\d+'" required>
+					  <p ng-show="movieForm.year.$invalid && !movieForm.year.$pristine" class="help-block">Year is required and should be a number.</p>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary" ng-disabled="movieForm.$invalid">Add movie</button>
+			</div>
+		</form>
+	</div>
+</div>
